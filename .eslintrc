@@ -1,0 +1,9 @@
+{
+    "parser": "@babel/eslint-parser",
+    "rules": {
+        "linebreak-style": ["error", "windows"],
+        "max-len": [1, 150, 2, {"ignoreComments": true}],
+        "react/require-default-props": "off"
+    },
+    "extends": ["airbnb"]
+  }

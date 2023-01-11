@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+    .buttonsActive{
+        @apply bg-red-700  text-white font-bold py-2 rounded w-80 border-black border-2  transition-all duration-500 relative top-1 z-30 ; 
+    }
+
+    .buttonsNotActive{
+        @apply border-black border-2 font-bold py-2 rounded w-80 transition-all duration-500  shadow-black shadow-sm relative top-2 z-0 mt-3;
+    }
+
+    .result{
+        @apply bg-green-300 px-5 border-black border-2 font-bold rounded;
+    }
+}
