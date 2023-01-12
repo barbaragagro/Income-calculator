@@ -1,6 +1,6 @@
 {
   "name": "barbara-gagro-salestrekker-technical-test",
-  "homepage": "https://barbaragagro/github.io/Income-calculator/",
+  "homepage": "https://barbaragagro.github.io/Income-calculator/",
   "version": "1.0.0",
   "main": "./src/index.js",
   "scripts": {
