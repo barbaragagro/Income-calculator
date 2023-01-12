@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d public",
+    "deploy": "gh-pages -d build",
     "build": "webpack --config webpack.prod.js"
   },
   "license": "MIT",
