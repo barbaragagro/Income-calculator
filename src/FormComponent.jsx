@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useRef } from 'react';
 import { ImArrowDown } from 'react-icons/im';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 export default function FormComponent({ calculated, setCalculated }) {
   const [incomeType, setIncomeType] = useState('');
   const [noIncomeType, setNoIncomeType] = useState(true);
@@ -11,26 +10,26 @@ export default function FormComponent({ calculated, setCalculated }) {
   const [WeeklyGrossResult, setWeeklyGrossResult] = useState('');
   const [FortnightlyGrossResult, setFortnightlyGrossResult] = useState('');
   const [MonthlyGrossResult, setMonthlyGrossResult] = useState('');
-  const [AnuallyGrossResult, setAnuallyGrossResult] = useState('');
+  const [AnnuallyGrossResult, setAnnuallyGrossResult] = useState('');
   const [WeeklyNetResult, setWeeklyNetResult] = useState('');
   const [FortnightlyNetResult, setFortnightlyNetResult] = useState('');
   const [MonthlyNetResult, setMonthlyNetResult] = useState('');
-  const [AnuallyNetResult, setAnuallyNetResult] = useState('');
+  const [AnnuallyNetResult, setAnnuallyNetResult] = useState('');
   const WeeklyTaxes = WeeklyGrossResult - WeeklyNetResult;
   const FortnightlyTaxes = FortnightlyGrossResult - FortnightlyNetResult;
   const MonthlyTaxes = MonthlyGrossResult - MonthlyNetResult;
-  const AnuallyTaxes = AnuallyGrossResult - AnuallyNetResult;
+  const AnnuallyTaxes = AnnuallyGrossResult - AnnuallyNetResult;
 
   const [Weekly, setWeekly] = useState(false);
   const [Fortnightly, setFortnightly] = useState(false);
   const [Monthly, setMonthly] = useState(false);
-  const [Anually, setAnually] = useState(false);
+  const [Annually, setAnnually] = useState(false);
 
   const inputRef = useRef(null);
   const WeeklyRef = useRef(null);
   const FortnightlyRef = useRef(null);
   const MonthlyRef = useRef(null);
-  const AnuallyRef = useRef(null);
+  const AnnuallyRef = useRef(null);
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -40,20 +39,20 @@ export default function FormComponent({ calculated, setCalculated }) {
       setWeeklyNetResult(inputValue * 0.9);
       setFortnightlyNetResult(inputValue * 0.85);
       setMonthlyNetResult(inputValue * 0.8);
-      setAnuallyNetResult(inputValue * 0.7);
+      setAnnuallyNetResult(inputValue * 0.7);
       setWeeklyGrossResult(inputValue);
       setFortnightlyGrossResult(inputValue);
       setMonthlyGrossResult(inputValue);
-      setAnuallyGrossResult(inputValue);
+      setAnnuallyGrossResult(inputValue);
     } else if (incomeType === 'net') {
       setWeeklyGrossResult(inputValue * 1.1);
       setFortnightlyGrossResult(inputValue * 1.15);
       setMonthlyGrossResult(inputValue * 1.20);
-      setAnuallyGrossResult(inputValue * 1.3);
+      setAnnuallyGrossResult(inputValue * 1.3);
       setWeeklyNetResult(inputValue);
       setFortnightlyNetResult(inputValue);
       setMonthlyNetResult(inputValue);
-      setAnuallyNetResult(inputValue);
+      setAnnuallyNetResult(inputValue);
     }
 
     if (WeeklyRef.current.checked) {
@@ -64,8 +63,8 @@ export default function FormComponent({ calculated, setCalculated }) {
       setFortnightlyGrossResult((prevRes) => Math.round(prevRes * 2));
       setMonthlyNetResult((prevRes) => Math.round(prevRes * 4.3));
       setMonthlyGrossResult((prevRes) => Math.round(prevRes * 4.3));
-      setAnuallyNetResult((prevRes) => Math.round(prevRes * 52));
-      setAnuallyGrossResult((prevRes) => Math.round(prevRes * 52));
+      setAnnuallyNetResult((prevRes) => Math.round(prevRes * 52));
+      setAnnuallyGrossResult((prevRes) => Math.round(prevRes * 52));
     } else if (FortnightlyRef.current.checked) {
       setFortnightly(true);
       setWeeklyNetResult((prevRes) => Math.round(prevRes / 2));
@@ -74,8 +73,8 @@ export default function FormComponent({ calculated, setCalculated }) {
       setFortnightlyGrossResult((prevRes) => Math.round(prevRes));
       setMonthlyNetResult((prevRes) => Math.round(prevRes * 2.15));
       setMonthlyGrossResult((prevRes) => Math.round(prevRes * 2.15));
-      setAnuallyNetResult((prevRes) => Math.round(prevRes * 26));
-      setAnuallyGrossResult((prevRes) => Math.round(prevRes * 26));
+      setAnnuallyNetResult((prevRes) => Math.round(prevRes * 26));
+      setAnnuallyGrossResult((prevRes) => Math.round(prevRes * 26));
     } else if (MonthlyRef.current.checked) {
       setMonthly(true);
       setWeeklyNetResult((prevRes) => Math.round(prevRes / 4.3));
@@ -84,22 +83,21 @@ export default function FormComponent({ calculated, setCalculated }) {
       setFortnightlyGrossResult((prevRes) => Math.round(prevRes / 2.15));
       setMonthlyNetResult((prevRes) => Math.round(prevRes));
       setMonthlyGrossResult((prevRes) => Math.round(prevRes));
-      setAnuallyNetResult((prevRes) => Math.round(prevRes * 12));
-      setAnuallyGrossResult((prevRes) => Math.round(prevRes * 12));
-    } else if (AnuallyRef.current.checked) {
-      setAnually(true);
+      setAnnuallyNetResult((prevRes) => Math.round(prevRes * 12));
+      setAnnuallyGrossResult((prevRes) => Math.round(prevRes * 12));
+    } else if (AnnuallyRef.current.checked) {
+      setAnnually(true);
       setWeeklyNetResult((prevRes) => Math.round(prevRes / 52));
       setWeeklyGrossResult((prevRes) => Math.round(prevRes / 52));
       setFortnightlyNetResult((prevRes) => Math.round(prevRes / 26));
       setFortnightlyGrossResult((prevRes) => Math.round(prevRes / 26));
       setMonthlyNetResult((prevRes) => Math.round(prevRes / 12));
       setMonthlyGrossResult((prevRes) => Math.round(prevRes / 12));
-      setAnuallyNetResult((prevRes) => Math.round(prevRes));
-      setAnuallyGrossResult((prevRes) => Math.round(prevRes));
+      setAnnuallyNetResult((prevRes) => Math.round(prevRes));
+      setAnnuallyGrossResult((prevRes) => Math.round(prevRes));
     }
 
     inputRef.current.value = '';
-    // setInputValue('');
     setCalculated(true);
   };
 
@@ -108,23 +106,23 @@ export default function FormComponent({ calculated, setCalculated }) {
       {calculated ? (
 
         <form>
-          <h1 className="font-bold text-lg">
+          <h1 className="mt-4 flex justify-center font-bold text-lg">
             You typed in
             {Weekly && ' Weekly'}
             {Fortnightly && ' Fortnightly'}
             {Monthly && ' Monthly'}
-            {Anually && ' Anually'}
+            {Annually && ' Annually'}
             {' '}
             {(incomeType === 'gross') ? 'Gross ' : 'Net '}
             income: $
             {' '}
             {inputValue}
 
-            <div className="p-2 relative left-24 text-3xl"><ImArrowDown /></div>
+            <div className="p-2 relative -left-52 top-8 text-3xl"><ImArrowDown /></div>
           </h1>
           {incomeType === 'gross' ? (
             <div>
-              <h1 className="inline-block text-2xl font-bold mb-5">
+              <h1 className="resultBox">
                 {Weekly ? (
                   <h1>
                     Weekly Net income:
@@ -159,12 +157,12 @@ export default function FormComponent({ calculated, setCalculated }) {
                     <br />
                   </h1>
                 ) : '' }
-                {Anually ? (
+                {Annually ? (
                   <h1>
                     Annualy Net income:
                     {' '}
                     <span className="result">
-                      {AnuallyNetResult}
+                      {AnnuallyNetResult}
                       {' '}
                       $
                     </span>
@@ -174,7 +172,7 @@ export default function FormComponent({ calculated, setCalculated }) {
             </div>
           ) : (
             <div>
-              <h1 className="inline-block text-2xl font-bold mb-5">
+              <h1 className="resultBox">
                 {Weekly ? (
                   <h1>
                     Weekly Gross income:
@@ -208,12 +206,12 @@ export default function FormComponent({ calculated, setCalculated }) {
                     </span>
                   </h1>
                 ) : '' }
-                {Anually ? (
+                {Annually ? (
                   <h1>
                     Annualy Gross income:
                     {' '}
                     <span className="result">
-                      {AnuallyGrossResult}
+                      {AnnuallyGrossResult}
                       {' '}
                       $
                     </span>
@@ -223,70 +221,70 @@ export default function FormComponent({ calculated, setCalculated }) {
               </h1>
             </div>
           )}
-          <table className="shadow-lg bg-white">
+          <table className="shadow-lg shadow-black bg-white mt-7 mb-10">
             <tr>
-              <th className="font-bold bg-red-100 border text-left px-8 py-4" />
-              <th className="font-bold bg-red-100 border text-left px-8 py-4">Gross Income</th>
-              <th className="font-bold bg-red-100 border text-left px-8 py-4">Taxes</th>
-              <th className="font-bold bg-red-100 border text-left px-8 py-4">Net Income</th>
+              <th className="tableTopRow">Frequency</th>
+              <th className="tableTopRow">Gross Income</th>
+              <th className="tableTopRow">Taxes</th>
+              <th className="tableTopRow">Net Income</th>
             </tr>
-            <tr>
-              <td className="font-bold border px-8 py-4">Weekly Income</td>
-              <td className="border px-8 py-4 text-center">
+            <tr className="tbHover">
+              <td className="tbTimeType">Weekly Income</td>
+              <td className="tbValues">
                 {WeeklyGrossResult}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
+              <td className="tbValues">
                 {WeeklyTaxes}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
+              <td className="tbValues">
                 {WeeklyNetResult}
                 $
               </td>
             </tr>
-            <tr>
-              <td className="font-bold border px-8 py-4">Fortnightly Income</td>
-              <td className="border px-8 py-4 text-center">
+            <tr className="tbHover">
+              <td className="tbTimeType">Fortnightly Income</td>
+              <td className="tbValues">
                 {FortnightlyGrossResult}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
+              <td className="tbValues">
                 {FortnightlyTaxes}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
+              <td className="tbValues">
                 {FortnightlyNetResult}
                 $
               </td>
             </tr>
-            <tr>
-              <td className="font-bold border px-8 py-4">Monthly Income</td>
-              <td className="border px-8 py-4 text-center">
+            <tr className="tbHover">
+              <td className="tbTimeType">Monthly Income</td>
+              <td className="tbValues">
                 {MonthlyGrossResult}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
+              <td className="tbValues">
                 {MonthlyTaxes}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
+              <td className="tbValues">
                 {MonthlyNetResult}
                 $
               </td>
             </tr>
-            <tr>
-              <td className="font-bold border px-8 py-4">Annualy Income</td>
-              <td className="border px-8 py-4 text-center">
-                {AnuallyGrossResult}
+            <tr className="tbHover">
+              <td className="tbTimeType">Annualy Income</td>
+              <td className="tbValues">
+                {AnnuallyGrossResult}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
-                {AnuallyTaxes}
+              <td className="tbValues">
+                {AnnuallyTaxes}
                 $
               </td>
-              <td className="border px-8 py-4 text-center">
-                {AnuallyNetResult}
+              <td className="tbValues">
+                {AnnuallyNetResult}
                 $
               </td>
             </tr>
@@ -295,23 +293,23 @@ export default function FormComponent({ calculated, setCalculated }) {
 
       ) : (
         <form>
-          <div className="mb-4">
-            <h1 className=" pt-1 block text-gray-700 text-lg font-bold mb-2">
+          <div>
+            <h1 className=" pt-1 block text-zinc-900 text-lg font-bold mb-3 mt-3">
               What is your total income?
             </h1>
             <input
               ref={inputRef}
-              className=" pl-16 relative font-bold shadow appearance-none border rounded w-full py-4 px-4
-         text-black  text-lg"
+              className="pl-16 relative font-bold shadow appearance-none border rounded w-full py-3 px-4
+         text-black  text-lg hover:border-red-800"
               placeholder="Income value"
               type="number"
               min="1"
               onChange={handleChange}
             />
-            <i className="absolute pt-4 text-xl font-bold left-1/3 pl-16">$</i>
+            <i className="relative bottom-11 text-2xl font-bold left-8 ">$</i>
             <br />
           </div>
-          <p className="text-gray-900 text-s italic pb-2 pt-4">Please, choose time period for the income.</p>
+          <p className="text-zinc-900 text-s italic pb-2">Please, choose time period for the income.</p>
           <div className="mb-6">
             <input
               className="w-6 h-6 relative top-1 cursor-pointer"
@@ -344,7 +342,7 @@ export default function FormComponent({ calculated, setCalculated }) {
             {' '}
             <span className="pl-1 pr-4 font-bold text-lg">Monthly</span>
             <input
-              ref={AnuallyRef}
+              ref={AnnuallyRef}
               className="ml-5 w-6 h-6 relative top-1 cursor-pointer"
               type="radio"
               name="time"
@@ -354,21 +352,17 @@ export default function FormComponent({ calculated, setCalculated }) {
             {' '}
             <span className="pl-1 pr-4 font-bold text-lg">Annualy</span>
           </div>
-          <p className="text-gray-900 text-s italic pt-2">Please, choose the income type.</p>
+          <p className="text-zinc-900 text-s italic pt-2">Please, choose the income type.</p>
           <div className="flex items-center justify-evenly">
             <button
-              className={`text-white font-bold py-2 px-4 rounded transition-all hover:text-lg
-               duration-500 h-14 shadow-sm shadow-black border-2 border-black w-1/3
-               ${(incomeType === 'gross') ? 'bg-green-300 scale-125 hover:text-base' : 'bg-red-700 hover:bg-red-900'}`}
+              className={` px-4 typeButtons  ${(incomeType === 'gross') ? ' bg-black scale-125 hover:text-base' : 'bg-red-700 hover:bg-red-900'}`}
               type="button"
               onClick={() => { setIncomeType('gross'); setNoIncomeType(false); }}
             >
               Gross income
             </button>
             <button
-              className={`m-5 text-white font-bold py-2 transition-all hover:text-lg
-               duration-500 rounded w-1/3 h-14 border-black border-2 shadow-sm shadow-black
-              ${(incomeType === 'net') ? ' bg-green-300 scale-125 hover:text-base' : ' bg-red-700 hover:bg-red-900'}`}
+              className={`m-5 typeButtons ${(incomeType === 'net') ? ' bg-black scale-125 hover:text-base' : ' bg-red-700 hover:bg-red-900'}`}
               type="button"
               onClick={() => { setIncomeType('net'); setNoIncomeType(false); }}
             >
@@ -379,8 +373,8 @@ export default function FormComponent({ calculated, setCalculated }) {
           <br />
           <div className="flex justify-center">
             <button
-              className="flex justify-center items-center bg-zinc-900 text-4xl transition-all duration-500
-              hover:bg-black hover:scale-110 w-1/2 h-16 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="flex justify-center items-center bg-zinc-100 text-zinc-600 border-2 border-zinc-600 text-4xl transition-all
+              duration-500  hover:scale-110 w-1/2 h-16 font-bold py-2 px-4 rounded disabled:not:cursor-pointer disabled:hover:scale-100"
               type="button"
               disabled={noIncomeType || inputValue === '' || noTimeType}
               onClick={onCalculate}
@@ -395,3 +389,8 @@ export default function FormComponent({ calculated, setCalculated }) {
 
   );
 }
+
+FormComponent.propTypes = {
+  calculated: PropTypes.bool,
+  setCalculated: PropTypes.func,
+};

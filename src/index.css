@@ -14,6 +14,28 @@
     }
 
     .result{
-        @apply bg-green-300 px-5 border-black border-2 font-bold rounded;
+        @apply bg-zinc-100 text-black border-red-700 border-2 font-bold rounded-2xl  text-2xl px-14 py-3 shadow-md shadow-black hover:bg-red-900 hover:text-white ;
+    }
+
+    .resultBox{
+        @apply flex justify-center text-2xl font-bold mt-9 mb-8 border-2 border-red-700 px-6 py-5 rounded-xl hover:scale-105;
+    }
+
+    .tableTopRow{
+        @apply font-bold bg-red-800 text-white border-2 border-black text-left px-8 py-4;
+    }
+    .tbTimeType{
+        @apply font-bold border-2 border-black px-8 py-4 bg-red-100 text-black;
+    }
+
+    .tbHover{
+        @apply hover:bg-red-100 hover:scale-105;
+    }
+    .tbValues{
+        @apply border px-8 py-4 text-center border-black w-fit;
+    }
+    .typeButtons{
+        @apply  text-white font-bold py-2 rounded transition-all hover:text-lg
+        duration-500 h-14 shadow-sm shadow-black border-2 border-black w-1/3;
     }
 }
