@@ -29,7 +29,7 @@
     }
 
     .tbHover{
-        @apply hover:bg-red-100 hover:scale-105;
+        @apply hover:bg-red-100 hover:scale-105 border-black;
     }
     .tbValues{
         @apply border px-8 py-4 text-center border-black w-fit;
